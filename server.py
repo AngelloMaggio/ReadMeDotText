@@ -1,12 +1,11 @@
 import os
 from flask import Flask
 from flask import request
-import base64
 import subprocess
 import logging
 import sys
-from pprint import pprint
 import random
+
 
 app = Flask(__name__)
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
@@ -39,20 +38,6 @@ def translate():
     print 'execute done'
     return '{"success":"'+unique+'.wav"}'
 
-# @app.route('/pwrite', methods=['GET','POST'])
-# def pwrite():
-#     fh = open("output.txt", "wb");
-#     text = request.data;
-#     print(text);
-#     fh.write(text);
-#     fh.close()
-
-#     p = subprocess.Popen("python ./execute.py", shell = True)
-#     p.wait()
-
-#     out_text = open('./output.txt', 'r')
-#     print out_text.readlines()
-#     return '{"success":true}'
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
